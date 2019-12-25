@@ -14,6 +14,14 @@
                 <search string="Books">
                     <field name="code"/>
                     <field name="name"/>
+                    <field name="isbn"/>
+                    <field name="author"/>
+                    <group expand="0" string="Group By">
+                        <filter string="publisher" name="publisher" context="{'group_by':'publisher'}"/>
+                        <filter string="publish_date" name="publish_date" context="{'group_by':'publish_date'}"/>
+                        <separator/>
+                        <filter string="binding_type" name="binding_type" context="{'group_by':'binding_type'}"/>
+                    </group>
                 </search>
             </field>
         </record>
@@ -25,6 +33,14 @@
                 <tree string="Books">
                     <field name="name"/>
                     <field name="code"/>
+                    <field name="isbn"/>
+                    <field name="author"/>
+                    <field name="pages"/>
+                    <field name="price"/>
+                    <field name="publish_date"/>
+                    <field name="publisher"/>
+                    <field name="binding_type"/>
+                    <field name="borrowed"/>
                 </tree>
             </field>
         </record>
