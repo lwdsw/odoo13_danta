@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Top menu item -->
+        <menuitem id="menu_tags" name="标签管理" parent="menu_books_root" sequence="16"/>
+
+        <record id="view_zerone_tags_tree" model="ir.ui.view">
+            <field name="name">zerone.tags.tree</field>
+            <field name="model">zerone.tags</field>
+            <field name="arch" type="xml">
+                <tree string="Tags" editable="bottom">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--action-->
+        <record id="action_zerone_tags" model="ir.actions.act_window">
+            <field name="name">图书类别</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">zerone.tags</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <!--Menu-->
+        <menuitem action="action_zerone_tags"
+                  id="menu_zerone_tags"
+                  name="标签管理"
+                  parent="menu_books_root"
+                  sequence="21"
+        />
+    </data>
+</odoo>

@@ -2,9 +2,9 @@
 <odoo>
     <data>
         <!-- Top menu item -->
-        <menuitem name="Books" id="menu_books_root" sequence="50" groups="base.group_user"
+        <menuitem name="图书管理" id="menu_books_root" sequence="50" groups="base.group_user"
                   web_icon="fcwz_manufacture_manage,static/description/icon.png"/>
-        <menuitem id="menu_books" name="Books" parent="menu_books_root" sequence="15"/>
+        <menuitem id="menu_books" name="图书" parent="menu_books_root" sequence="15"/>
 
         <!--Search View-->
         <record id="view_zerone_books_search" model="ir.ui.view">
@@ -16,11 +16,12 @@
                     <field name="name"/>
                     <field name="isbn"/>
                     <field name="author"/>
+                    <field name="tags_ids"/>
                     <group expand="0" string="Group By">
-                        <filter string="publisher" name="publisher" context="{'group_by':'publisher'}"/>
-                        <filter string="publish_date" name="publish_date" context="{'group_by':'publish_date'}"/>
+                        <filter string="出版社" name="publisher" context="{'group_by':'publisher'}"/>
+                        <filter string="出版日期" name="publish_date" context="{'group_by':'publish_date'}"/>
                         <separator/>
-                        <filter string="binding_type" name="binding_type" context="{'group_by':'binding_type'}"/>
+                        <filter string="装帧类型" name="binding_type" context="{'group_by':'binding_type'}"/>
                     </group>
                 </search>
             </field>
@@ -31,8 +32,8 @@
             <field name="model">zerone.book</field>
             <field name="arch" type="xml">
                 <tree string="Books">
-                    <field name="name"/>
                     <field name="code"/>
+                    <field name="name"/>
                     <field name="isbn"/>
                     <field name="author"/>
                     <field name="pages"/>
@@ -53,9 +54,26 @@
                     <header>
                     </header>
                     <sheet string="Books">
+                        <div class="oe_title">
+                            <h1 class="o_row">
+                                <field name="name" placeholder="图书名称"/>
+                            </h1>
+                        </div>
                         <group col="4">
-                            <field name="name"/>
                             <field name="code"/>
+                            <field name="isbn"/>
+                            <field name="author"/>
+                            <field name="pages"/>
+                            <field name="publisher"/>
+                            <field name="publish_date"/>
+                            <field name="binding_type"/>
+                            <field name="price"/>
+                            <field name="borrowed"/>
+                            <field name="date_last_borrowed"/>
+                        </group>
+                        <group>
+                            <field name="tags_ids" widget="many2many_tags"/>
+                            <field name="e_link"/>
                         </group>
                     </sheet>
                 </form>

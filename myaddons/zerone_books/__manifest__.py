@@ -14,7 +14,8 @@
     'depends': ['base'],
     'data': [
         'security/ir.model.access.csv',
-        'views/zerone_books.xml',
+        'views/zerone_book.xml',
+        'views/zerone_tags.xml',
     ],
     'qweb': [
     ],
