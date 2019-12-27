@@ -16,6 +16,7 @@
         'security/ir.model.access.csv',
         'views/zerone_book.xml',
         'views/zerone_tags.xml',
+        'views/zerone_shelf.xml',
     ],
     'qweb': [
     ],

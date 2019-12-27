@@ -22,6 +22,7 @@ class ZeroneBook(models.Model):
     borrowed = fields.Boolean(string="是否被借阅", default=False)
     date_last_borrowed = fields.Datetime("最后被借阅时间", index=True, readonly=True)
 
+    shelf_id = fields.Many2one('zerone.shelf', string='所在书架')
     tags_ids = fields.Many2many("zerone.tags", string="标签")
 
     @api.depends('isbn', 'name')

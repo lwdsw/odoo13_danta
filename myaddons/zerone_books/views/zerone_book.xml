@@ -72,6 +72,7 @@
                             <field name="date_last_borrowed"/>
                         </group>
                         <group>
+                            <field name="shelf_id"/>
                             <field name="tags_ids" widget="many2many_tags"/>
                             <field name="e_link"/>
                         </group>
