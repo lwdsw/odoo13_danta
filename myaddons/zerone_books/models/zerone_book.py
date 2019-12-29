@@ -5,6 +5,7 @@ class ZeroneBook(models.Model):
     _name = "zerone.book"
     _description = "Zerone Books"
 
+    image_1920 = fields.Image(string="图书样例")
     name = fields.Char(string="图书名称", required=True)
     code = fields.Char(string="图书编号", copy=False, help="管理编号，用于快速定位图书")
     isbn = fields.Char(string="ISBN", copy=False)
