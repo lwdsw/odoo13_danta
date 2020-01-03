@@ -27,3 +27,21 @@ class ZeroneShelf(models.Model):
                 record.capacity_rate = 0.0
             else:
                 record.capacity_rate = 100.0 * len(record.book_ids) / record.capacity
+
+    @api.onchange("capacity", "book_ids")
+    def _onchange_capacity(self):
+        if self.capacity < 0:
+            return {
+                'warning': {
+                    'title': "书架容量值不正确",
+                    'message': "书架容量不能小于 0",
+                    'type': 'notification'
+                }
+            }
+        if self.capacity < len(self.book_ids):
+            return {
+                'warning': {
+                    'title': "图书太多了",
+                    'message': "图书数量超过了书架容量值",
+                },
+            }

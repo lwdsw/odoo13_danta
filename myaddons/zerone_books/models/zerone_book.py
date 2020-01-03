@@ -5,8 +5,6 @@ class ZeroneBook(models.Model):
     _name = "zerone.book"
     _description = "Zerone Books"
 
-    _inherit = ['image.mixin']
-
     image_1920 = fields.Image(string="图书样例")
     name = fields.Char(string="图书名称", required=True)
     code = fields.Char(string="图书编号", copy=False, help="管理编号，用于快速定位图书")
@@ -34,3 +32,6 @@ class ZeroneBook(models.Model):
         for book in self:
             result.append((book.id, '%s(%s)' % (book.name, book.isbn)))
         return result
+
+    def action_text(self):
+        pass
