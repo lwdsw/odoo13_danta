@@ -1,5 +1,5 @@
 from odoo import api, fields, models, _
-
+from odoo.exceptions import UserError, ValidationError
 
 class ZeroneBook(models.Model):
     _name = "zerone.book"
@@ -32,6 +32,11 @@ class ZeroneBook(models.Model):
         for book in self:
             result.append((book.id, '%s(%s)' % (book.name, book.isbn)))
         return result
+
+    @api.constrains('code')
+    def _check_description(self):
+        if self.search_count([('code', '=', self.code)]) > 1:
+            raise ValidationError("图书编号必须是唯一的！")
 
     def action_text(self):
         pass
