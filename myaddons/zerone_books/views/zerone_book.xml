@@ -182,7 +182,7 @@
             <field name="name">Books</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">zerone.book</field>
-            <field name="view_mode">tree,form,kanban,calendar</field>
+            <field name="view_mode">tree,form,kanban</field>
             <field name="domain">[]</field>
             <field name="context">{}</field>
             <field name="search_view_id" ref="view_zerone_books_search"/>
