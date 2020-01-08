@@ -9,22 +9,6 @@ class ZeroneBook(models.Model):
 
     image_1920 = fields.Image(string="图书样例")
 
-    # image_1920 = fields.Image("图书样例", compute='_compute_image', compute_sudo=True)
-    # image_1024 = fields.Image("Image 1024", compute='_compute_image', compute_sudo=True)
-    # image_512 = fields.Image("Image 512", compute='_compute_image', compute_sudo=True)
-    # image_256 = fields.Image("Image 256", compute='_compute_image', compute_sudo=True)
-    # image_128 = fields.Image("Image 128", compute='_compute_image', compute_sudo=True)
-    #
-    # def _compute_image(self):
-    #     for book in self:
-    #         # We have to be in sudo to have access to the images
-    #         book_id = self.sudo().env['zerone.book'].browse(book.id)
-    #         book.image_1920 = book_id.image_1920
-    #         book.image_1024 = book_id.image_1024
-    #         book.image_512 = book_id.image_512
-    #         book.image_256 = book_id.image_256
-    #         book.image_128 = book_id.image_128
-
     name = fields.Char(string="图书名称", required=True)
     code = fields.Char(string="图书编号", copy=False, help="管理编号，用于快速定位图书")
     isbn = fields.Char(string="ISBN", copy=False)

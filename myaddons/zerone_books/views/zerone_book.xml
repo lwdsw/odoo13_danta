@@ -137,8 +137,8 @@
                                 </div>
                                 <!-- 设置图片 着重解释 -->
                                 <img role="img" t-att-alt="record.name.value" t-att-title="record.name.raw_value"
-                                     t-att-width="85" t-att-height="auto" style="float:left;max-height:127px;"
-                                     t-att-src="kanban_image('zerone.book', 'image_1920', record.id.raw_value)"/>
+                                     style="float:left;max-height:127px;"
+                                     t-att-src="kanban_image('zerone.book', 'image_128', record.id.raw_value)"/>
                                 <div class="oe_module_desc" style="float:left;padding-left:15px;">
                                     <h4 class="oe_module_name" style="font-size:13px;" >
                                         <field name="name"/>
