@@ -52,7 +52,10 @@
             <field name="arch" type="xml">
                 <form string="Books">
                     <header>
-                        <button name="action_text" type="object" string="Next button" class="btn-primary"/>
+                        <button name="action_borrow" type="object" string="借阅" class="btn-primary"
+                                attrs="{'invisible': [('borrowed', '=', True)]}"/>
+                        <button name="action_return" type="object" string="归还" class="btn-primary"
+                                attrs="{'invisible': [('borrowed', '=', False)]}"/>
                     </header>
                     <sheet string="Books">
                         <field name="image_1920" widget="image" class="oe_avatar"
@@ -86,6 +89,7 @@
             </field>
         </record>
 
+        <!-- Kanban -->
         <record id="view_zerone_books_kanban" model="ir.ui.view">
             <field name="name">Books Kanban</field>
             <field name="model">zerone.book</field>
@@ -141,7 +145,7 @@
                                      style="float:left;max-height:127px;"
                                      t-att-src="kanban_image('zerone.book', 'image_128', record.id.raw_value)"/>
                                 <div class="oe_module_desc" style="float:left;padding-left:15px;">
-                                    <h4 class="oe_module_name" style="font-size:13px;" >
+                                    <h4 class="oe_module_name" style="font-size:13px;">
                                         <field name="name"/>
                                         <code>
                                             <field name="author"/>
@@ -172,13 +176,25 @@
                 </kanban>
             </field>
         </record>
+        <!-- calendar view -->
+        <record id="view_zerone_books_calendar" model="ir.ui.view">
+            <field name="name">zerone.book.calendar</field>
+            <field name="model">zerone.book</field>
+            <field name="arch" type="xml">
+                <calendar string="Book Borrowed Calendar"
+                          date_start="publish_date" date_stop="publish_date" color="publisher">
+                    <field name="name"/>
+                </calendar>
+            </field>
+        </record>
+
 
         <!--action-->
         <record id="action_zerone_books" model="ir.actions.act_window">
             <field name="name">Books</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">zerone.book</field>
-            <field name="view_mode">tree,form,kanban</field>
+            <field name="view_mode">tree,form,kanban,calendar</field>
             <field name="domain">[]</field>
             <field name="context">{}</field>
             <field name="search_view_id" ref="view_zerone_books_search"/>

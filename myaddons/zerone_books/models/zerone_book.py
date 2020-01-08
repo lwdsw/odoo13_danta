@@ -41,8 +41,13 @@ class ZeroneBook(models.Model):
         if self.search_count([('code', '=', self.code)]) > 1:
             raise ValidationError("图书编号必须是唯一的！")
 
-    def action_text(self):
-        print("表单视图中的按钮")
+    def action_borrow(self):
+        self.borrowed = True
+        self.date_last_borrowed = fields.Datetime.now()
+
+    def action_return(self):
+        self.borrowed = False
+        self.date_last_borrowed = None
 
     def button_call_function1(self):
         self.borrowed = False
