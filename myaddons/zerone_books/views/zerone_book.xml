@@ -85,12 +85,99 @@
                 </form>
             </field>
         </record>
+
+        <record id="view_zerone_books_kanban" model="ir.ui.view">
+            <field name="name">Books Kanban</field>
+            <field name="model">zerone.book</field>
+            <field name="arch" type="xml">
+                <kanban create="false" class="o_modules_kanban">
+                    <field name="id"/>
+                    <field name="image_1920"/>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="isbn"/>
+                    <field name="author"/>
+                    <field name="publisher"/>
+                    <field name="publish_date"/>
+                    <field name="borrowed"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_module_vignette">
+                                <!-- Qweb语法 ：使用 t-esc 输出。-->
+                                <!-- 注：record 代表当前记录， borrowed 字段名，raw_value 字段值 -->
+                                <!-- 当视图中 borrowed 字段被勾选时，值为 True。 使用 t-esc 输出为 true，否则为 false-->
+                                <!--可以把下面注释去掉，输出试试看。 -->
+                                <!--<t t-esc="record.borrowed.raw_value"/>-->
+
+                                <!-- Qweb语法 ：使用 t-set t-value 设置变量。 -->
+                                <!-- 注：t-set 为每个卡片设置一个变量 v_borrowed ，设置值取自每条记录的 borrowed 字段的值 -->
+                                <t t-set="v_borrowed" t-value="record.borrowed.raw_value == true"/>
+                                <!--可以把下面注释去掉，输出试试看。 -->
+                                <!--<t t-esc="v_borrowed"/>-->
+
+                                <div class="o_dropdown_kanban dropdown" tabindex="-1">
+                                    <a class="dropdown-toggle o-no-caret btn" data-toggle="dropdown"
+                                       data-display="static" href="#" role="button" aria-label="Dropdown menu"
+                                       title="Dropdown menu">
+                                        <span class="fa fa-ellipsis-v"/>
+                                    </a>
+                                    <div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        <!-- type="edit" 当存在type属性，且值为edit时，点击这个下拉项，会进入表单编辑状态 -->
+                                        <a type="edit" class="dropdown-item">编辑</a>
+                                        <!-- Qweb语法：使用 t-if 做判断， 判断条件使用 t-set 设置的变量 -->
+                                        <!-- 调用模型后台方法 调用后台方法button_call_function1，设为未被借阅-->
+                                        <a t-if="v_borrowed == true" name="button_call_function1" type="object"
+                                           role="menuitem" class="dropdown-item">设为未被借阅
+                                        </a>
+                                        <!-- 调用模型后台方法 调用后台方法button_call_function2，设为被借阅 -->
+                                        <a t-if="v_borrowed == false" name="button_call_function2" type="object"
+                                           role="menuitem" class="dropdown-item">设为已被借阅
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- 设置图片 着重解释 -->
+                                <img role="img" t-att-alt="record.name.value" t-att-title="record.name.raw_value"
+                                     t-att-width="85" t-att-height="auto" style="float:left;max-height:127px;"
+                                     t-att-src="kanban_image('zerone.book', 'image_1920', record.id.raw_value)"/>
+                                <div class="oe_module_desc" style="float:left;padding-left:15px;">
+                                    <h4 class="oe_module_name" style="font-size:13px;" >
+                                        <field name="name"/>
+                                        <code>
+                                            <field name="author"/>
+                                        </code>
+                                    </h4>
+                                    <p class="oe_isbn">
+                                        <field name="isbn"/>
+                                    </p>
+                                    <p class="oe_publish_info">
+                                        <field name="publisher"/>
+                                        <field name="publish_date"/>
+                                    </p>
+                                    <div class="oe_module_action">
+                                        <!-- 调用后台方法展示形式2 -->
+                                        <button type="object" class="btn btn-primary btn-sm"
+                                                name="button_call_function1"
+                                                t-if="record.borrowed.raw_value == true">设为未被借阅
+                                        </button>
+                                        <button type="object" class="btn btn-primary btn-sm"
+                                                name="button_call_function2"
+                                                t-if="record.borrowed.raw_value == false">设为已被借阅
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
         <!--action-->
         <record id="action_zerone_books" model="ir.actions.act_window">
             <field name="name">Books</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">zerone.book</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,kanban</field>
             <field name="domain">[]</field>
             <field name="context">{}</field>
             <field name="search_view_id" ref="view_zerone_books_search"/>
