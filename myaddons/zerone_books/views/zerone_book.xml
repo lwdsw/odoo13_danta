@@ -124,6 +124,7 @@
                                     <div class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                                         <!-- type="edit" 当存在type属性，且值为edit时，点击这个下拉项，会进入表单编辑状态 -->
                                         <a type="edit" class="dropdown-item">编辑</a>
+                                        <a type="delete" class="dropdown-item">删除</a>
                                         <!-- Qweb语法：使用 t-if 做判断， 判断条件使用 t-set 设置的变量 -->
                                         <!-- 调用模型后台方法 调用后台方法button_call_function1，设为未被借阅-->
                                         <a t-if="v_borrowed == true" name="button_call_function1" type="object"
