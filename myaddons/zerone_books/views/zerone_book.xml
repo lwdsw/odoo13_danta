@@ -176,18 +176,6 @@
                 </kanban>
             </field>
         </record>
-        <!-- calendar view -->
-        <record id="view_zerone_books_calendar" model="ir.ui.view">
-            <field name="name">zerone.book.calendar</field>
-            <field name="model">zerone.book</field>
-            <field name="arch" type="xml">
-                <calendar string="Book Borrowed Calendar"
-                          date_start="publish_date" date_stop="publish_date" color="publisher">
-                    <field name="name"/>
-                </calendar>
-            </field>
-        </record>
-
 
         <!--action-->
         <record id="action_zerone_books" model="ir.actions.act_window">
