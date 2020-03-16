@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_zerone_books" model="ir.sequence">
+            <field name="name">图书编号</field>
+            <field name="code">zerone.book.sequence</field>
+            <field name="prefix">%(year)s%(month)s%(day)s%(h24)s%(min)s%(sec)s</field>
+        </record>
+    </data>
+</odoo>

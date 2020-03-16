@@ -69,7 +69,7 @@
                             </group>
                         </div>
                         <group col="4">
-                            <field name="code"/>
+                            <field name="code" readonly="1"/>
                             <field name="isbn"/>
                             <field name="author"/>
                             <field name="pages"/>
