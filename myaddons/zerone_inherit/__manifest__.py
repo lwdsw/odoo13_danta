@@ -13,6 +13,7 @@
     'depends': ['zerone_books'],
     'data': [
         'views/inherit_zerone_shelf.xml',
+        'wizard/export_books_data.xml',
         'data/ir_sequence_data.xml',
     ],
     'qweb': [

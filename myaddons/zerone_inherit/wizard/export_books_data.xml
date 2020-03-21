@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="export_book_data_form_view" model="ir.ui.view">
+        <field name="name">export.books.data.form</field>
+        <field name="type">form</field>
+        <field name="model">export.books.data</field>
+        <field name="priority" eval="20"/>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="start_date" required="1"/>
+                    <field name="end_date" required="1"/>
+                </group>
+                <field name="file_name" invisible="1"/>
+                <field name="already_export" invisible="1"/>
+                <div attrs="{'invisible': [('already_export', '!=', True)]}">
+                    <separator/>
+                    <p>
+                        点击下载：<field name="xls_file" readonly="1" filename="file_name"/>
+                    </p>
+                </div>
+                <footer>
+                    <button name='export_file' string='导出' type='object' class='oe_highlight'/>
+                    <button string="取消" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <!--action-->
+    <record id="action_export_books_data" model="ir.actions.act_window">
+        <field name="name">导出图书数据</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">export.books.data</field>
+        <field name="view_mode">form</field>
+        <field name="context">{}</field>
+        <field name="target">new</field>
+    </record>
+    <!--menu-->
+    <menuitem id="menu_export_books_data"
+              action="action_export_books_data" name="导出图书数据"
+              parent="zerone_books.menu_books_root" sequence="150"/>
+</odoo>
