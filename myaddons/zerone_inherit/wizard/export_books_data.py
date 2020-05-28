@@ -42,6 +42,7 @@ class ExportBooksData(models.TransientModel):
             ("publish_date", "<=", self.end_date),
             ("publish_date", ">=", self.start_date)
         ])
+
         for book in books:
             content_list.append([
                 book.code,

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template id="template" xml:space="preserve">
+    <!-- Widget 拓展Tree视图增加自定义按钮 -->
+    <t t-extend="ListView.buttons" t-name="ZeroneBook.buttons">
+        <t t-jquery="button.o_list_export_xlsx" t-operation="after">
+            <button type="button" class="btn btn-danger o_button_send_test fa fa-circle-o" title="发送"></button>
+        </t>
+    </t>
+</template>

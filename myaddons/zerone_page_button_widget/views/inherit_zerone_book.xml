@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="inherit_view_zerone_books_tree" model="ir.ui.view">
+        <field name="name">inherit.zerone.book.tree</field>
+        <field name="model">zerone.book</field>
+        <field name="inherit_id" ref="zerone_books.view_zerone_books_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="attributes">
+                <attribute name="js_class">zerone_book_tree</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

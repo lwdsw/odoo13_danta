@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- 发送到排版系统 -->
+    <record id="view_multi_test_my_wizard" model="ir.ui.view">
+        <field name="name">测试我的向导</field>
+        <field name="model">wizard.zerone</field>
+        <field name="arch" type="xml">
+            <form string="测试我的向导">
+                <div style="color:#31708f">
+                    <field name="message" readonly="1"/>
+                </div>
+                <footer>
+                    <button name="comfirm_test_wizard" string="测试" type="object" class="btn-primary"/>
+                    <button string="关闭" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <act_window
+            name="测试我的向导"
+            id="action_multi_test_my_wizard"
+            res_model="wizard.zerone"
+            binding_model="zerone.book"
+            binding_views="list"
+            view_mode="form"
+            target="new"
+            context="{'default_ids': [active_id]}"
+    />
+</odoo>
