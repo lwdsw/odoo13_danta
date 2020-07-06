@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="book_card">
+        <t t-name="book_card_template">
+            <t t-foreach="books" t-as="book">
+                <div class="col-sm-12 col-md-4 col-lg-4">
+                    <div class="zerone_panel panel-warning">
+                        <h5>
+                            <t t-esc="book.name"/>
+                        </h5>
+                        <span>
+                            <t t-esc="book.author"/>
+                        </span>
+                    </div>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

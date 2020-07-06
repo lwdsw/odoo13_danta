@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="newest_books_page" model="website.page">
+        <field name="name">新上图书</field>
+        <field name="website_published">True</field>
+        <field name="url">/newest_book</field>
+        <field name="type">qweb</field>
+        <field name="key">zerone_inherit.books_page</field>
+        <field name="arch" type="xml">
+            <t t-name="zerone_inherit.newest_books_page_template">
+                <t t-call="website.layout">
+                    <div class="container">
+                        <div id="wrap">
+                            <div class="row">
+                                <t t-call="zerone_inherit.book_card"/>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </field>
+    </record>
+
+    <record id="newest_books_page_link" model="website.menu">
+        <field name="name">Newest Books</field>
+        <field name="page_id" ref="newest_books_page"/>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">99</field>
+    </record>
+</odoo>
